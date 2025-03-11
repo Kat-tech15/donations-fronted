@@ -1,43 +1,33 @@
 <template>
-    <div class="min-h-screen flex items-center justify-center bg-gray-100">
-      <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h2 class="text-2xl font-semibold mb-4 text-center">Make a Donation</h2>
-        <form @submit.prevent="submitDonation">
-          <!-- Select Donation Type -->
-          <label class="block mb-2 text-sm font-medium">Select Donation Type</label>
-          <select v-model="donationType" class="w-full p-2 border rounded mb-4">
-            <option value="money">Money</option>
-            <option value="books">Books</option>
-            <option value="clothes">Clothes</option>
+    <div class="donation-container">
+      <h2>Make a Donation</h2>
+      <form @submit.prevent="processDonation">
+        <!-- Select Donation Type -->
+        <label for="donationType">Select Donation Type:</label>
+        <select id="donationType" v-model="donationType" @change="checkPaymentRequired">
+          <option value="" disabled>Select an option</option>
+          <option value="money">Money</option>
+          <option value="books">Books</option>
+          <option value="clothes">Clothes</option>
+        </select>
+  
+        <!-- Payment Fields (Only for Money Donations) -->
+        <div v-if="donationType === 'money'">
+          <label for="amount">Amount (KES):</label>
+          <input type="number" id="amount" v-model="amount" placeholder="Enter amount" required />
+  
+          <label for="paymentMethod">Payment Method:</label>
+          <select id="paymentMethod" v-model="paymentMethod">
+            <option value="" disabled>Select Payment Method</option>
+            <option value="mpesa">M-Pesa</option>
+            <option value="paypal">PayPal</option>
+            <option value="stripe">Stripe</option>
           </select>
+        </div>
   
-          <!-- Amount Input (Only for Money Donations) -->
-          <div v-if="donationType === 'money'">
-            <label class="block mb-2 text-sm font-medium">Amount (KES/USD)</label>
-            <input v-model="amount" type="number" class="w-full p-2 border rounded mb-4" required />
-          </div>
-  
-          <!-- Payment Method (Only for Money Donations) -->
-          <div v-if="donationType === 'money'">
-            <label class="block mb-2 text-sm font-medium">Select Payment Method</label>
-            <select v-model="paymentMethod" class="w-full p-2 border rounded mb-4">
-              <option value="mpesa">M-Pesa</option>
-              <option value="paypal">PayPal</option>
-              <option value="stripe">Stripe</option>
-            </select>
-          </div>
-  
-          <!-- Other Donations Description -->
-          <div v-if="donationType !== 'money'">
-            <label class="block mb-2 text-sm font-medium">Donation Details</label>
-            <textarea v-model="donationDetails" class="w-full p-2 border rounded mb-4" required></textarea>
-          </div>
-  
-          <button type="submit" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
-            Donate Now
-          </button>
-        </form>
-      </div>
+        <!-- Submit Button -->
+        <button type="submit">Donate Now</button>
+      </form>
     </div>
   </template>
   
@@ -45,28 +35,79 @@
   export default {
     data() {
       return {
-        donationType: "money",
-        amount: "",
-        paymentMethod: "mpesa",
-        donationDetails: ""
-      };
+        donationType: '',
+        amount: '',
+        paymentMethod: ''
+      }
     },
     methods: {
-      submitDonation() {
-        // Handle donation submission (send to API)
-        console.log("Donation submitted:", {
-          type: this.donationType,
-          amount: this.amount,
-          paymentMethod: this.paymentMethod,
-          details: this.donationDetails
-        });
-        alert("Donation submitted successfully!");
+      checkPaymentRequired() {
+        if (this.donationType !== 'money') {
+          this.amount = '';
+          this.paymentMethod = '';
+        }
+      },
+      processDonation() {
+        if (this.donationType === 'money' && (!this.amount || !this.paymentMethod)) {
+          alert('Please fill in all payment details.');
+          return;
+        }
+  
+        // Simulate donation processing (replace with API call later)
+        alert(`Thank you for your ${this.donationType} donation!`);
+        
+        // Reset form after submission
+        this.donationType = '';
+        this.amount = '';
+        this.paymentMethod = '';
       }
     }
-  };
+  }
   </script>
   
   <style scoped>
-    /* Add custom styles if needed */
+  .donation-container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input, select {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #42b983;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #369f6c;
+  }
   </style>
   
