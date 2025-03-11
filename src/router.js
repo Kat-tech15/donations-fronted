@@ -5,6 +5,7 @@ import Signup from './views/Signup.vue';
 import ForgotPassword from './views/ForgotPassword.vue';
 import VerifyOTP from './views/VerifyOTP.vue';
 import Home from './views/Home.vue';
+import Donation from '.views/Donation.vue';
 
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
     { path: '/signup', component: Signup },
     { path: '/forgot-password', component: ForgotPassword },
     { path: '/verify-otp', component: VerifyOTP },
+    { path: '/donate', component:Donation },
 ];
 
 const router = createRouter({
