@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-   
+    <!-- Navigation Bar -->
     <nav class="navbar">
       <h1 class="logo">Donation Management</h1>
       <ul class="nav-links">
@@ -11,12 +11,13 @@
       </ul>
     </nav>
 
-    
+    <!-- Hero Section -->
     <header class="hero">
       <div class="overlay"></div>
-      <h2 class="hero-text">Welcome to Donation Management</h2>
+      <h2 class="hero-text">Welcome to  <span style="color: darkviolet;">Katwai's</span> <br> Donation Organization</h2>
     </header>
 
+    <!-- About Section -->
     <section id="about" class="section">
       <h2 class="section-title">About Us</h2>
       <p class="section-text">
@@ -24,7 +25,7 @@
       </p>
     </section>
 
-    
+    <!-- Services Section -->
     <section id="services" class="section section-alt">
       <h2 class="section-title">Our Services</h2>
       <div class="services-grid">
@@ -35,17 +36,25 @@
       </div>
     </section>
 
-    
+    <!-- Donate & Apply Section -->
+    <section id="donate-apply" class="section">
+      <h2 class="section-title">Make a Difference</h2>
+      <div class="cta-buttons">
+        <router-link to="/donate" class="cta-button donate">Donate Here</router-link>
+        <router-link to="/apply" class="cta-button apply">Apply Now</router-link>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
     <section id="testimonials" class="section">
       <h2 class="section-title">Testimonials</h2>
-      <p class="section-text">See what our donors and beneficiaries have to say.</p>
       <div class="testimonials">
         <blockquote>"This platform changed lives!" - Jane Doe</blockquote>
         <blockquote>"Seamless donations and great impact!" - John Smith</blockquote>
       </div>
     </section>
 
-    
+    <!-- Contact Section -->
     <section id="contact" class="section section-alt">
       <h2 class="section-title">Contact Us</h2>
       <p class="section-text">
@@ -54,7 +63,7 @@
       <p class="section-text">Phone: +254 112 871 337</p>
     </section>
 
-    
+    <!-- Footer -->
     <footer class="footer">
       <p>© 2025 Donation Management. All rights reserved.</p>
     </footer>
@@ -63,9 +72,10 @@
 
 <style scoped>
 .main-container {
-  background-color: green;
+  background-color: #f5f5f5;
   font-family: Arial, sans-serif;
 }
+
 .navbar {
   background-color: #047857;
   color: white;
@@ -85,10 +95,6 @@
   gap: 1.5rem;
 }
 
-.nav-links li {
-  list-style: none;
-}
-
 .nav-links a {
   color: white;
   text-decoration: none;
@@ -103,7 +109,7 @@
 }
 
 .hero {
-  background-image: url('/assets/background.jpg');
+  background-image: url('src/assets/background.jpg');
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -142,9 +148,34 @@
   margin-bottom: 1rem;
 }
 
-.section-text {
-  font-size: 1.1rem;
-  color: #4b5563;
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.donate {
+  background-color: rgb(34, 150, 24);
+}
+.donate:hover{
+background-color: #33d6d6 ;
+}
+
+.apply {
+  background-color: #5367c0;
+}
+.apply:hover{
+  background-color: rgb(240, 70, 203);
 }
 
 .services-grid {
@@ -162,10 +193,6 @@
   font-weight: 600;
 }
 
-.testimonials {
-  margin-top: 1.5rem;
-}
-
 .testimonials blockquote {
   font-style: italic;
   color: #6b7280;
@@ -181,7 +208,6 @@
 .contact-link:hover {
   text-decoration: underline;
 }
-
 
 .footer {
   background-color: #047857;

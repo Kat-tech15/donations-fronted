@@ -4,9 +4,11 @@ import { createRouter, createWebHistory } from 'vue-router';
 import ForgotPassword from './pages/ForgotPassword.vue';
 import VerifyOTP from './pages/VerifyOTP.vue';
 import Home from './pages/Home.vue';
-import Donation from './pages/Donation.vue';
+import Donations from './pages/Donations.vue';
 import Beneficiaries from './pages/Beneficiaries.vue'
 import Testimonials from './pages/Testimonials.vue';
+import ApplyForm from './pages/ApplyForm.vue'
+import DonateForm from './pages/DonateForm.vue';
 
 import AdminLayout from './layouts/AdminLayout.vue'; 
 
@@ -18,6 +20,7 @@ import AdminUsers from './pages/Admin/AdminUsers.vue';
 import AdminLogistics from './pages/Admin/AdminLogistics.vue';
 import AdminTestimonials from './pages/Admin/AdminTestimonials.vue';
 
+
 import Login from './pages/Auth/Login.vue';
 import Signup from './pages/Auth/Signup.vue';
 import Register from './pages/Auth/Register.vue';
@@ -25,12 +28,17 @@ import Register from './pages/Auth/Register.vue';
 const routes = [
     { path: '/',name:'Home', component: Home },
     { path: '/login',name:'Login', component: Login },
+    { path: '/register',name:'Register', component:Register },
     { path: '/signup',name:'Signup', component: Signup },
+    { path: '/adminlayout', name:'AdminLayout',component:AdminLayout },
+    { path: '/testimonials', name:'Testimonials', component:Testimonials },
     { path: '/:pathMatch(.*)*', redirect:'/'},
     { path: '/forgot-password',name:'ForgotPassword', component: ForgotPassword },
     { path: '/verify-otp',name:'VerifyOTP', component: VerifyOTP },
-    { path: '/donation',name:'Donation', component: Donation},
+    { path: '/donations',name:'Donations', component: Donations},
     { path: '/beneficiaries',name:'Beneficiaries', component:Beneficiaries},
+    { path: '/donate', name:'Donate', component:DonateForm },
+    { path: '/apply',name:'Apply', component:ApplyForm},
     {
         path: '/admin',
     component: AdminDashboard, 
