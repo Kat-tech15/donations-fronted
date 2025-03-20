@@ -1,5 +1,6 @@
 <template>
-  <div class="main-container">
+  <div class="home">
+    <div class="main-container">
     <!-- Navigation Bar -->
     <nav class="navbar">
       <h1 class="logo">Donation Management</h1>
@@ -68,9 +69,19 @@
       <p>© 2025 Donation Management. All rights reserved.</p>
     </footer>
   </div>
+
+  </div>
+  
 </template>
 
 <style scoped>
+.home{
+  width: ;
+  height: ;
+  margin:0;
+  padding: 0;
+  overflow: auto;
+}
 .main-container {
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;

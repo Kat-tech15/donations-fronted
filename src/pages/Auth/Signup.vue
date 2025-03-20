@@ -1,67 +1,118 @@
 <template>
-    <div class="signup">
-      <h2>Sign Up here</h2>
-      <form @submit.prevent="register">
-        <input v-model="email" type="email" placeholder="Email" required />
-        <input v-model="password" type="password" placeholder="Password" required />
-        <input v-model="password" type="password" placeholder="confirm-password">
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        email: '',
-        password: ''
-      };
-    },
-    methods: {
-      register() {
-        console.log('Signing up with', this.email, this.password);
+  <div class="signup">
+    <h2>Sign Up Here</h2>
+    <form @submit.prevent="register">
+      <input v-model="email" type="email" placeholder="Email" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <input v-model="confirmPassword" type="password" placeholder="Confirm Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+    <p v-if="successMessage" class="success">{{ successMessage }}</p>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      errorMessage: '',
+      successMessage: ''
+    };
+  },
+  methods: {
+    async register() {
+      // Reset messages
+      this.errorMessage = '';
+      this.successMessage = '';
+
+      // Basic validation
+      if (this.password !== this.confirmPassword) {
+        this.errorMessage = 'Passwords do not match.';
+        return;
+      }
+
+      try {
+        // Replace with your backend API endpoint
+        const response = await axios.post('https://your-backend-api/signup', {
+          email: this.email,
+          password: this.password
+        });
+
+        if (response.status === 201) {
+          this.successMessage = 'Registration successful! You can now log in.';
+          // Optionally, redirect to the login page
+          // this.$router.push('/login');
+        } else {
+          this.errorMessage = 'An error occurred during registration. Please try again.';
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 409) {
+          this.errorMessage = 'An account with this email already exists.';
+        } else {
+          this.errorMessage = 'An error occurred during registration. Please try again.';
+        }
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  .signup {
-    text-align: center;
-    margin-top: 20px;
-    background-color: rgb(90, 194, 80);
-    margin-bottom: 50px;
-    border-radius: 10px;
   }
-  .signup input{
-    padding: 9px;
-    margin-top: 15px;
-    border-radius: 5px;
-    display: flex;
-    background-color: rgb(208, 218, 216);
-  }
-  .signup input:hover{
-    background-color: rgb(24, 180, 201);
-  }
-  .signup form{
-    height: 220px;
-    width: auto;
-    border-radius: 15px;
-    background-color: rgb(199, 199, 218);
-  }
-  .signup button{
-    border-radius: 10px;
-    background-color: rgb(228, 113, 193);
-    color: whitesmoke;
-    font-size: medium;
-    font-weight: bold;
-    transition: 0.5s;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-  .signup button:hover{
-    background-color: rgb(130, 129, 197);
-  }
-  </style>
-  
+};
+</script>
+
+<style scoped>
+.signup {
+  text-align: center;
+  margin-top: 20px;
+  background-color: rgb(90, 194, 80);
+  margin-bottom: 50px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.signup input {
+  padding: 9px;
+  margin-top: 15px;
+  border-radius: 5px;
+  display: block;
+  background-color: rgb(208, 218, 216);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.signup input:hover {
+  background-color: rgb(24, 180, 201);
+}
+.signup form {
+  height: auto;
+  width: auto;
+  border-radius: 15px;
+  background-color: rgb(199, 199, 218);
+  padding: 20px;
+}
+.signup button {
+  border-radius: 10px;
+  background-color: rgb(228, 113, 193);
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.signup button:hover {
+  background-color: rgb(130, 129, 197);
+}
+.error {
+  color: red;
+  margin-top: 10px;
+}
+.success {
+  color: green;
+  margin-top: 10px;
+}
+</style>

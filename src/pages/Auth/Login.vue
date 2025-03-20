@@ -1,82 +1,110 @@
 <template>
-    <div class="login-form">
-      <div class="">
-        <h2 class="">Login</h2>
-        <form @submit.prevent="handleLogin">
-          <div class="mb-4">
-            <label class="">Email</label>
-            <input type="email" v-model="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          </div>
-          <div class="mb-4">
-            <label class="">Password</label>
-            <input type="password" v-model="password" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          </div>
-          <button type="submit" class="">Login</button>
-          <p class="mt-4 text-center text-sm">
-            Don't have an account? <router-link to="/signup" class="text-blue-500">Sign up</router-link>
-          </p>
-        </form>
-      </div>
-    </div>
-  </template>
+  <div class="login">
+    <h2>Login Here</h2>
+    <form @submit.prevent="login">
+      <input v-model="email" type="email" placeholder="Email" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+    <p v-if="successMessage" class="success">{{ successMessage }}</p>
+  </div>
+</template>
 
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        email: '',
-        password: '',
-      };
-    },
-    methods: {
-      async handleLogin() {
-        try {
-          const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
-            email: this.email,
-            password: this.password
-          });
-          console.log('Login Successful', response.data);
-          localStorage.setItem('token', response.data.access);
-          this.$router.push('/');
-        } catch (error) {
-          console.error('Login Failed', error.response.data);
-          alert('Invalid Credentials');
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      errorMessage: '',
+      successMessage: ''
+    };
+  },
+  methods: {
+    async login() {
+      // Reset messages
+      this.errorMessage = '';
+      this.successMessage = '';
+
+      try {
+        // Replace with your backend API endpoint
+        const response = await axios.post('https://your-backend-api/login', {
+          email: this.email,
+          password: this.password
+        });
+
+        if (response.status === 200) {
+          this.successMessage = 'Login successful!';
+          // Optionally, redirect to the dashboard or another page
+          // this.$router.push('/dashboard');
+        } else {
+          this.errorMessage = 'Invalid email or password.';
+        }
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          this.errorMessage = 'Invalid email or password.';
+        } else {
+          this.errorMessage = 'An error occurred during login. Please try again.';
         }
       }
     }
-  };
-  </script>
-  <style>
-  .login-form{
-    background-color: magenta;
-    height:350px;
-    width: auto;
-    border-radius: 2pc;
   }
-  .login-form h2{
-    color: rgb(17, 13, 13);
-    text-align: center;
-    margin-top: 20px;
-  }
-  .mb-4 input{
-    border-radius: 2pc;
-    background-color: rgb(187, 149, 149);
-    margin-top: 20px;
-    padding: 5px;
-  }
-  .mb-4 input:hover{
-    background-color: rgb(92, 177, 177);
-  }
-  .login-form button{
-    background-color: rgb(66, 55, 214);
-    border-radius: 2pc;
-    margin-top: 15px;
-  }
-  .login-form button:hover{
-    background-color: rgb(53, 223, 67);
-  }
+};
+</script>
+
+<style scoped>
+.login {
+  text-align: center;
+  margin-top: 20px;
+  background-color: rgb(90, 194, 80);
+  margin-bottom: 50px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.login input {
+  padding: 9px;
+  margin-top: 15px;
+  border-radius: 5px;
+  display: block;
+  background-color: rgb(208, 218, 216);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login input:hover {
+  background-color: rgb(24, 180, 201);
+}
+.login form {
+  height: auto;
+  width: auto;
+  border-radius: 15px;
+  background-color: rgb(199, 199, 218);
+  padding: 20px;
+}
+.login button {
+  border-radius: 10px;
+  background-color: rgb(228, 113, 193);
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: bold;
+  transition: 0.5s;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.login button:hover {
+  background-color: rgb(130, 129, 197);
+}
+.error {
+  color: red;
+  margin-top: 10px;
+}
+.success {
+  color: green;
+  margin-top: 10px;
+}
 </style>
-  
