@@ -65,31 +65,32 @@ export default {
 
 <style scoped>
 .signup {
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin-top: 20px;
   background-color: rgb(90, 194, 80);
-  margin-bottom: 50px;
-  border-radius: 10px;
-  padding: 20px;
+  margin: 50px auto;
+  border-radius: 8px;
+  padding: 2rem;
 }
 .signup input {
   padding: 9px;
   margin-top: 15px;
   border-radius: 5px;
   display: block;
-  background-color: rgb(208, 218, 216);
+  background-color: white;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 .signup input:hover {
-  background-color: rgb(24, 180, 201);
+  background-color: rgb(60, 212, 187);
 }
 .signup form {
   height: auto;
   width: auto;
   border-radius: 15px;
-  background-color: rgb(199, 199, 218);
   padding: 20px;
 }
 .signup button {

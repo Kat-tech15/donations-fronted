@@ -56,38 +56,37 @@ export default {
 </script>
 
 <style scoped>
-.login {
+.login{
+  max-width: 400px;
+  margin: 50px auto;
   text-align: center;
-  margin-top: 20px;
-  background-color: rgb(90, 194, 80);
-  margin-bottom: 50px;
-  border-radius: 10px;
-  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgb(25, 214, 25);
+  border-radius:8px;
+  padding: 2rem;
 }
 .login input {
   padding: 9px;
   margin-top: 15px;
   border-radius: 5px;
   display: block;
-  background-color: rgb(208, 218, 216);
+  background-color: white;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 .login input:hover {
-  background-color: rgb(24, 180, 201);
+  background-color: rgb(155, 209, 216);
 }
 .login form {
-  height: auto;
-  width: auto;
+  max-width: 400px;
   border-radius: 15px;
-  background-color: rgb(199, 199, 218);
-  padding: 20px;
+  padding: 0;
 }
 .login button {
   border-radius: 10px;
   background-color: rgb(228, 113, 193);
-  color: whitesmoke;
+  color: white;
   font-size: medium;
   font-weight: bold;
   transition: 0.5s;
@@ -97,7 +96,7 @@ export default {
   cursor: pointer;
 }
 .login button:hover {
-  background-color: rgb(130, 129, 197);
+  background-color: rgb(24, 163, 66);
 }
 .error {
   color: red;

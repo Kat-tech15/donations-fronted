@@ -76,8 +76,6 @@
 
 <style scoped>
 .home{
-  width: ;
-  height: ;
   margin:0;
   padding: 0;
   overflow: auto;
