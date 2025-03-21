@@ -9,6 +9,9 @@ import Beneficiaries from './pages/Beneficiaries.vue'
 import Testimonials from './pages/Testimonials.vue';
 import ApplyForm from './pages/ApplyForm.vue'
 import DonateForm from './pages/DonateForm.vue';
+import About from './pages/About.vue';
+import Services from './pages/Services.vue';
+import Contacts from './pages/Contacts.vue';
 
 import AdminLayout from './layouts/AdminLayout.vue'; 
 
@@ -27,6 +30,9 @@ import Register from './pages/Auth/Register.vue';
 
 const routes = [
     { path: '/',name:'Home', component: Home },
+    { path: '/about',name:'About', component: About },
+    { path: '/services',name:'Services', component: Services },
+    { path: '/contacts',name:'Contacts', component: Contacts },
     { path: '/login',name:'Login', component: Login },
     { path: '/register',name:'Register', component:Register },
     { path: '/signup',name:'Signup', component: Signup },

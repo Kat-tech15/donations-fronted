@@ -5,20 +5,17 @@
     <nav class="navbar">
       <h1 class="logo">Donation Management</h1>
       <ul class="nav-links">
-        <li><router-link to="/" exact-active-class="active-link">Home</router-link></li>
-        <li><router-link to="/about" exact-active-class="active-link">About</router-link></li>
-        <li><router-link to="/services" exact-active-class="active-link">Services</router-link></li>
-        <li><router-link to="/contact" exact-active-class="active-link">Contact</router-link></li>
+        <li><a href="#Home" @click="scrollToSection('Home')">Home</a></li>
+        <li><a href="#About" @click="scrollToSection('About')">About</a></li>
+        <li><a href="#Services" @click="scrollToSection('Services')">Services</a></li>
+        <li><a href="#Contacts" @click="scrollToSection('Contacts')">Contacts</a></li>
       </ul>
     </nav>
-
-    <!-- Hero Section -->
     <header class="hero">
       <div class="overlay"></div>
       <h2 class="hero-text">Welcome to  <span style="color: darkviolet;">Katwai's</span> <br> Donation Organization</h2>
     </header>
 
-    <!-- About Section -->
     <section id="about" class="section">
       <h2 class="section-title">About Us</h2>
       <p class="section-text">
@@ -26,7 +23,6 @@
       </p>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="section section-alt">
       <h2 class="section-title">Our Services</h2>
       <div class="services-grid">
@@ -56,7 +52,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section section-alt">
+    <section id="contacts" class="section section-alt">
       <h2 class="section-title">Contact Us</h2>
       <p class="section-text">
         Email: <a href="mailto:contact@donation.com" class="contact-link">contact@donation.com</a>
@@ -73,6 +69,18 @@
   </div>
   
 </template>
+<script>
+export default {
+  methods: {
+    scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if(section){
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }
+};
+</script>
 
 <style scoped>
 .home{

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/signup">Signup</router-link>
+      <li><a href="#Home">Home</a></li>
+      <li><a href="#login">Log in</a></li>
+      <li><a href="#signup">Sign up</a></li>
     </nav>
     <router-view />
   </div>
@@ -21,5 +21,8 @@ nav {
   gap: 10px;
   padding: 10px;
   background: #eee;
+}
+html{
+  scroll-behavior: smooth;
 }
 </style>
