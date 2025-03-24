@@ -94,10 +94,10 @@ export default {
 }
 
 .navbar {
-  background-color: #047857;
+  background-color: #e23fac;
   color: white;
   padding: 1rem 2rem;
-  display: flex;
+  display: flex;;
   justify-content: space-between;
   align-items: center;
 }
@@ -109,20 +109,24 @@ export default {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  list-style: none;
+  gap: 6.5rem;
+  margin: 0;
 }
 
 .nav-links a {
-  color: white;
+  color: rgb(48, 35, 226);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
   transition: 0.3s;
 }
 
 .nav-links a:hover,
 .active-link {
-  text-decoration: underline;
   font-weight: bold;
+  background-color: #68ce54;
+  border-radius: 5px;
+  padding: 2px 5px;
 }
 
 .hero {

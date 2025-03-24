@@ -18,9 +18,11 @@ export default {
 <style scoped>
 nav {
   display: flex;
-  gap: 10px;
+  justify-content: center;
+  text-decoration: none;
+  gap: 60px;
   padding: 10px;
-  background: #eee;
+  background: #c483b6;
 }
 html{
   scroll-behavior: smooth;

@@ -10,30 +10,86 @@
   
         <label for="amount">Donation Amount (KES):</label>
         <input type="number" id="amount" v-model="donation.amount" required />
+
+        <label for="payment-method">Select Payment Method:</label>
+        <select id="payment-method" v-model="donation.paymentMethod" required>
+          <option value="" disabled>Select Payment Method</option>
+          <option value="paypal">PayPal</option>
+          <option value="mpesa">M-pesa</option>
+          <option value="stripe">Stripe</option>
+        </select>
   
         <button type="submit" class="btn">Donate</button>
       </form>
+      <div v-if="paymentMethod === 'paypal'" id="paypal-button-container"></div>
+      <div v-if="paymentMethod === 'mpesa'">
+        <!-- Implement M-Pesa payment logic here -->
+        <button @click="initiateMpesaPayment">Pay with M-Pesa</button>
     </div>
   </template>
   
   <script>
   export default {
-    data() {
-      return {
-        donation: {
-          name: "",
-          email: "",
-          amount: "",
-        },
-      };
-    },
-    methods: {
-      submitDonation() {
-        console.log("Donation Submitted:", this.donation);
-        alert("Thank you for your donation!");
+  data() {
+    return {
+      donation: {
+        name: '',
+        email: '',
+        amount: '',
       },
+      paymentMethod: '',
+    };
+  },
+  methods: {
+    submitDonation() {
+      if (this.donation.amount > 0 && this.paymentMethod) {
+        if (this.paymentMethod === 'paypal') {
+          this.renderPayPalButton();
+        } else if (this.paymentMethod === 'mpesa') {
+          // Trigger M-Pesa payment process
+          // Implement M-Pesa integration here
+        }
+        // Add more payment method conditions as needed
+      } else {
+        alert('Please enter a valid donation amount and select a payment method.');
+      }
     },
-  };
+    renderPayPalButton() {
+      if (window.paypal) {
+        window.paypal.Buttons({
+          style: {
+            layout: 'vertical',
+            color: 'gold',
+            shape: 'rect',
+            label: 'donate',
+          },
+          createOrder: (data, actions) => {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: (this.donation.amount / 100).toFixed(2), // Convert KES to USD
+                  currency_code: 'USD',
+                },
+              }],
+            });
+          },
+          onApprove: (data, actions) => {
+            return actions.order.capture().then(details => {
+              alert('Donation successful! Thank you, ' + details.payer.name.given_name);
+              // Handle post-donation actions (e.g., update database)
+            });
+          },
+          onError: err => {
+            console.error('PayPal error', err);
+            alert('An error occurred during the donation process.');
+          },
+        }).render('#paypal-button-container');
+      } else {
+        console.error('PayPal SDK not loaded.');
+      }
+    },
+  },
+};
   </script>
   
   <style scoped>
