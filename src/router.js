@@ -12,6 +12,7 @@ import DonateForm from './pages/DonateForm.vue';
 import About from './pages/About.vue';
 import Services from './pages/Services.vue';
 import Contacts from './pages/Contacts.vue';
+import DanationPage from './pages/DonationPage.vue';
 
 import AdminLayout from './layouts/AdminLayout.vue'; 
 
@@ -27,12 +28,14 @@ import AdminTestimonials from './pages/Admin/AdminTestimonials.vue';
 import Login from './pages/Auth/Login.vue';
 import Signup from './pages/Auth/Signup.vue';
 import Register from './pages/Auth/Register.vue';
+import DonationPage from './pages/DonationPage.vue';
 
 const routes = [
     { path: '/',name:'Home', component: Home },
     { path: '/about',name:'About', component: About },
     { path: '/services',name:'Services', component: Services },
     { path: '/contacts',name:'Contacts', component: Contacts },
+    { path: '/donationpage', name:'DonationPage', component: DonationPage},
     { path: '/login',name:'Login', component: Login },
     { path: '/register',name:'Register', component:Register },
     { path: '/signup',name:'Signup', component: Signup },

@@ -5,10 +5,10 @@
     <nav class="navbar">
       <h1 class="logo">Donation Management</h1>
       <ul class="nav-links">
-        <li><a href="#Home" @click="scrollToSection('Home')">Home</a></li>
-        <li><a href="#About" @click="scrollToSection('About')">About</a></li>
-        <li><a href="#Services" @click="scrollToSection('Services')">Services</a></li>
-        <li><a href="#Contacts" @click="scrollToSection('Contacts')">Contacts</a></li>
+        <li><a href="Home" @click="scrollToSection('Home')">Home</a></li>
+        <li><a href="About" @click="scrollToSection('About')">About</a></li>
+        <li><a href="Services" @click="scrollToSection('Services')">Services</a></li>
+        <li><a href="Contacts" @click="scrollToSection('Contacts')">Contacts</a></li>
       </ul>
     </nav>
     <header class="hero">

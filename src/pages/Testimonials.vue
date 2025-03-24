@@ -1,6 +1,6 @@
 // src/pages/Testimonials.vue
 <template>
-  <div>
+  <div class="container">
     <h2 class="text-2xl font-bold">Testimonials & Impact Metrics</h2>
     
     <!-- Impact Metrics -->
@@ -21,8 +21,8 @@
     </div>
     
     <!-- Submit Testimonial Form -->
-    <div class="mt-6 p-4 bg-white shadow-md rounded">
-      <h3 class="text-xl font-bold">Submit a Testimonial</h3>
+    <div class="test">
+      <h3 >Submit a Testimonial</h3>
       <form @submit.prevent="submitTestimonial">
         <input v-model="newTestimonial.name" type="text" placeholder="Your Name" class="border p-2 w-full mb-2" required />
         <textarea v-model="newTestimonial.message" placeholder="Your Testimonial" class="border p-2 w-full mb-2" required></textarea>
@@ -84,6 +84,18 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  background-color: aqua;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: green;
+  padding: 10px 15px;
+}
+.test input,
+textarea{
+  background-color: rgb(143, 134, 151);
+  border-radius: 8px;
+}
 ul {
   list-style: none;
   padding: 0;
