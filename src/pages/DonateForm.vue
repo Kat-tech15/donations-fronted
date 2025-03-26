@@ -18,7 +18,6 @@
           <option value="mpesa">M-pesa</option>
           <option value="stripe">Stripe</option>
         </select>
-  
         <button type="submit" class="btn">Donate</button>
       </form>
       <div v-if="paymentMethod === 'paypal'" id="paypal-button-container"></div>
@@ -26,6 +25,7 @@
         <!-- Implement M-Pesa payment logic here -->
         <button @click="initiateMpesaPayment">Pay with M-Pesa</button>
     </div>
+  </div>
   </template>
   
   <script>
@@ -42,12 +42,11 @@
   },
   methods: {
     submitDonation() {
-      if (this.donation.amount > 0 && this.paymentMethod) {
-        if (this.paymentMethod === 'paypal') {
+      if (this.donation.amount > 0 && this.donation.paymentMethod) {
+        if (this.donation.paymentMethod === 'paypal') {
           this.renderPayPalButton();
-        } else if (this.paymentMethod === 'mpesa') {
-          // Trigger M-Pesa payment process
-          // Implement M-Pesa integration here
+        } else if (this.donation.paymentMethod === 'mpesa') {
+          
         }
         // Add more payment method conditions as needed
       } else {
@@ -88,6 +87,9 @@
         console.error('PayPal SDK not loaded.');
       }
     },
+    initiateMpesaPayment() {
+      alert('M-pesa payment process initiated. Implement API intergration here.');
+    }
   },
 };
   </script>
@@ -113,8 +115,7 @@
     margin: 0.5rem 0 0.2rem;
     font-weight:500;
   }
-  
-  input {
+  input, select {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;

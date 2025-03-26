@@ -16,6 +16,8 @@ import DanationPage from './pages/DonationPage.vue';
 
 import AdminLayout from './layouts/AdminLayout.vue'; 
 
+import SchedulePickup from './components/SchedulePickup.vue';
+
 import AdminDashboard from './pages/Admin/AdminDashboard.vue';
 import AdminAnalytics from './pages/Admin/AdminAnalytics.vue';
 import AdminApplications from './pages/Admin/AdminApplications.vue';
@@ -40,6 +42,7 @@ const routes = [
     { path: '/register',name:'Register', component:Register },
     { path: '/signup',name:'Signup', component: Signup },
     { path: '/adminlayout', name:'AdminLayout',component:AdminLayout },
+    { path: '/schedule-pickup', name:'SchedulePickup', component:SchedulePickup },
     { path: '/testimonials', name:'Testimonials', component:Testimonials },
     { path: '/:pathMatch(.*)*', redirect:'/'},
     { path: '/forgot-password',name:'ForgotPassword', component: ForgotPassword },
