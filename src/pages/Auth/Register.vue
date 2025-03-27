@@ -1,6 +1,6 @@
 <template>
-    <div class="register-container">
-      <h1 class="text-2xl font-bold mb-4">Register</h1>
+  <div class="container">
+    <h1 class="text-2xl font-bold mb-4">Register</h1>
   
       <form @submit.prevent="registerUser" class="space-y-4">
         <div>
@@ -23,18 +23,21 @@
           <input type="password" v-model="confirmPassword" class="input" required />
         </div>
   
-        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Register</button>
+        <button type="submit" >Register</button>
       </form>
   
       <p class="mt-4">
         Already have an account? 
         <router-link to="/login" class="text-blue-500">Login here</router-link>
       </p>
-    </div>
+  </div>
+      
   </template>
   
   <script>
   import axios from "axios";
+  import api from "@/services/api";
+
   
   export default {
     data() {
@@ -71,12 +74,41 @@
   </script>
   
   <style scoped>
-  .input {
+  .container{
+    background-color: rgb(233, 217, 217);
+    max-width: 400px;
+    border-radius: 8px;
+    margin-top: 2px;
+    color: green;
+    
+  }
+  label{
+    color: rgb(15, 17, 15);
+    font-weight: 500;
+  }
+  input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #f5ecec;
+    border-radius: 8px;
+    background-color: white;
     margin-top: 4px;
   }
+  input:hover{
+    background-color: rgb(232, 241, 248);
+  }
+  button{
+    background-color: blue;
+    margin-top: 15px;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.s;
+  }
+  button:hover{
+    background-color: rgb(13, 192, 28);
+  }
+
   </style>
   

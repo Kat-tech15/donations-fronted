@@ -4,7 +4,9 @@
     <form @submit.prevent="login">
       <input v-model="email" type="email" placeholder="Email" required />
       <input v-model="password" type="password" placeholder="Password" required />
-      <button type="submit">Login</button>
+      <button type="submit" :disabled="loading">
+        {{ loading ? "Logging in..." : "Login" }}
+      </button>
     </form>
     <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
     <p v-if="successMessage" class="success">{{ successMessage }}</p>
@@ -12,57 +14,69 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from "@/services/api";
 
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      errorMessage: '',
-      successMessage: ''
+      email: "",
+      password: "",
+      errorMessage: "",
+      successMessage: "",
+      loading: false,
     };
   },
   methods: {
     async login() {
-      // Reset messages
-      this.errorMessage = '';
-      this.successMessage = '';
+      this.errorMessage = "";
+      this.successMessage = "";
+      this.loading = true;
 
       try {
-        // Replace with your backend API endpoint
-        const response = await axios.post('https://your-backend-api/login', {
+        // Send login request to backend
+        const response = await api.post("users/login/", {
           email: this.email,
-          password: this.password
+          password: this.password,
         });
 
         if (response.status === 200) {
-          this.successMessage = 'Login successful!';
-          // Optionally, redirect to the dashboard or another page
-          // this.$router.push('/dashboard');
-        } else {
-          this.errorMessage = 'Invalid email or password.';
+          // Store token in localStorage
+          localStorage.setItem("token", response.data.token);
+          
+          // Show success message
+          this.successMessage = "Login successful! Redirecting...";
+
+          // Redirect to dashboard
+          setTimeout(() => {
+            this.$router.push("/dashboard");
+          }, 1000);
         }
       } catch (error) {
-        if (error.response && error.response.status === 401) {
-          this.errorMessage = 'Invalid email or password.';
+        if (error.response) {
+          if (error.response.status === 401) {
+            this.errorMessage = "Invalid email or password.";
+          } else {
+            this.errorMessage = "Login failed. Please try again.";
+          }
         } else {
-          this.errorMessage = 'An error occurred during login. Please try again.';
+          this.errorMessage = "Network error. Please check your connection.";
         }
+      } finally {
+        this.loading = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.login{
+.login {
   max-width: 400px;
   margin: 50px auto;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: rgb(25, 214, 25);
-  border-radius:8px;
+  border-radius: 8px;
   padding: 2rem;
 }
 .login input {
@@ -94,6 +108,10 @@ export default {
   margin-bottom: 5px;
   padding: 10px 20px;
   cursor: pointer;
+}
+.login button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
 }
 .login button:hover {
   background-color: rgb(24, 163, 66);

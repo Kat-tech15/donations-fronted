@@ -16,6 +16,12 @@ const routes =  [
         component: AdminDashboard,
         meta: { requiresAuth: true },
     },
+    {
+        path: "/dashboard",
+        name: "Dashboard",
+        component: () => import("../pages/Dashboard.vue"),
+        meta: { requiresAuth: true }
+    },
 ];
 
 const router = createRouter({
@@ -24,7 +30,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if (to.meta.requiresAuth && !store.state.isAuthenticated) {
+    const isAuthenticated = !!localStorage.getItem('token');
+    if (to.meta.requiresAuth && !isAuthenticated) {
         next('/login');
     }else{
         next();

@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import api from "@api";
 
 defineProps({
   msg: String,

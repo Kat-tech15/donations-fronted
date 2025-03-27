@@ -20,9 +20,12 @@ nav {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  gap: 60px;
-  padding: 10px;
-  background: #c483b6;
+  gap: 80px;
+  padding: 10px 5px;
+  list-style-type: none;
+  background: #29e248;
+  border-radius: 8px;
+  color: blue;
 }
 html{
   scroll-behavior: smooth;

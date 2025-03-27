@@ -15,8 +15,7 @@
   
         <div class="mb-4">
           <label class="block font-medium">Drop-off Location ID</label>
-          <input
-          ut v-model="pickupData.dropoff_location" type="text" class="border p-2 w-full rounded">
+          <input v-model="pickupData.dropoff_location" type="text" class="border p-2 w-full rounded">
         </div>
   
         <div class="mb-4">
@@ -36,7 +35,6 @@
   
   <script>
   import axios from "axios";
-  import api from "@api";
   
   export default {
     data() {

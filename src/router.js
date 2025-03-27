@@ -14,6 +14,8 @@ import Services from './pages/Services.vue';
 import Contacts from './pages/Contacts.vue';
 import DanationPage from './pages/DonationPage.vue';
 
+import Dashboard from  '../pages/user/Dashboard.vue';
+
 import AdminLayout from './layouts/AdminLayout.vue'; 
 
 import SchedulePickup from './components/SchedulePickup.vue';
@@ -52,6 +54,11 @@ const routes = [
     { path: '/donate', name:'Donate', component:DonateForm },
     { path: '/apply',name:'Apply', component:ApplyForm},
     {
+      path: '/dashboard',
+      component: Dashboard,
+      meta:{ requiresAuth:true },
+    },
+    {
         path: '/admin',
     component: AdminDashboard, 
     meta: { requiresAuth: true, requiresAdmin: true },
@@ -64,6 +71,7 @@ const routes = [
       { path: 'testimonials', name: 'AdminTestimonials', component: AdminTestimonials },
     ],
   },
+  
 ];
 
 
@@ -73,7 +81,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const isAuthenticated = localStorage.getItem('token'); // Check if user is logged in
+    const isAuthenticated = !!localStorage.getItem('token'); // Check if user is logged in
     const isAdmin = localStorage.getItem('role') === 'admin'; // Check if user is admin
   
     if (to.meta.requiresAuth && !isAuthenticated) {

@@ -40,6 +40,8 @@
   </template>
   
   <script>
+  import api from "@/services/api";
+
   export default {
     name: "VerifyOTP",
     data() {
