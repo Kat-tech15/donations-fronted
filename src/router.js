@@ -14,7 +14,7 @@ import Services from './pages/Services.vue';
 import Contacts from './pages/Contacts.vue';
 import DanationPage from './pages/DonationPage.vue';
 
-import Dashboard from  '../pages/user/Dashboard.vue';
+import Dashboard from  './User/Dashboard.vue';
 
 import AdminLayout from './layouts/AdminLayout.vue'; 
 

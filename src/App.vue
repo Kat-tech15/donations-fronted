@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div id="app">
     <nav>
       <li><a href="Home">Home</a></li>
@@ -7,6 +8,7 @@
     </nav>
     <router-view />
   </div>
+</div>
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template>
-  <div class="home">
+  <div class="full-screen">
+ 
     <div class="main-container">
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -65,8 +66,8 @@
       <p>© 2025 Donation Management. All rights reserved.</p>
     </footer>
   </div>
-
   </div>
+  
   
 </template>
 <script>
@@ -83,11 +84,6 @@ export default {
 </script>
 
 <style scoped>
-.home{
-  margin:0;
-  padding: 0;
-  overflow: auto;
-}
 .main-container {
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;
