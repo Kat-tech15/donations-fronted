@@ -3,16 +3,16 @@
       <section class="section">
         <h2 class="section-title">Contact Us</h2>
         <form @submit.prevent="submitForm" class="contacts-form">
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="formData.name" required>
+          <label for="name" >Name:</label>
+          <input type="text" id="name" placeholder="Enter your name" v-model="formData.name" required>
   
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="formData.email" required>
+          <label for="email" >Email:</label>
+          <input type="email" id="email" placeholder="Enter your email" v-model="formData.email" required>
   
-          <label for="message">Message:</label>
-          <textarea id="message" v-model="formData.message" required></textarea>
+          <label for="message" >Message:</label>
+          <textarea id="message" placeholder="Enter your message Here..." v-model="formData.message" required rows="5"></textarea>
   
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn">Submit Message</button>
         </form>
       </section>
     </div>
@@ -33,7 +33,7 @@
     methods: {
       submitForm() {
         console.log("Form submitted:", this.formData);
-        alert("Message sent successfully!");
+        alert("Message submitted successfully!");
         this.formData = { name: "", email: "", message: "" };
       },
     },
@@ -42,12 +42,15 @@
   
   <style scoped>
   .contacts {
-    text-align: center;
-    background-color: white;
+    text-align: left;
+    background-color: rgb(187, 235, 243);
     padding: 4rem 2rem;
+    color: #308a35;
   }
   .section-title {
+    text-align: center;
     font-size: 2rem;
+    color: hotpink;
     font-weight: bold;
     margin-bottom: 1.5rem;
   }
@@ -63,14 +66,15 @@
     width: 100%;
     padding: 0.8rem;
     border: 1px solid #ccc;
+    background-color: white;
     border-radius: 5px;
     font-size: 1rem;
   }
   .submit-btn {
-    background-color: #047857;
+    background-color: #0bf016;
     color: white;
-    padding: 1rem;
-    font-size: 1.2rem;
+    padding: 0.75rem;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
