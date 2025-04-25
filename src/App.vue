@@ -5,6 +5,9 @@
         <li><a href="Home">Home</a></li>
         <li><a href="login">Log in</a></li>
         <li><a href="signup">Sign up</a></li>
+        <li><a href="About">About</a></li>
+        <li><a href="Services">Services</a></li>
+        <li><a href="Contacts">Contacts</a></li>
       </ul>
     </nav>
     <div class="content">
@@ -19,12 +22,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
 /* Reset default margin and padding for all elements */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 /* Ensure html and body take full height */
@@ -61,11 +66,13 @@ nav a {
   text-decoration: none; /* Removes the underline from links */
   font-size: 16px;
   padding: 5px 10px;
+  font-weight: bold;
 }
 
 /* Optional: Add hover effect for better user experience */
 nav a:hover {
-  text-decoration: underline;
+  background-color: rgb(200, 202, 45);
+  border-radius: 8px;
 }
 
 /* Content area to prevent overlap with the fixed navbar */

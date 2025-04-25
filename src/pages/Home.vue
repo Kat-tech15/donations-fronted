@@ -1,17 +1,6 @@
 <template>
-  <div class="full-screen">
- 
     <div class="main-container">
     <!-- Navigation Bar -->
-    <nav class="navbar">
-      <h1 class="logo">Donation Management</h1>
-      <ul class="nav-links">
-        <li><a href="Home" @click="scrollToSection('Home')">Home</a></li>
-        <li><a href="About" @click="scrollToSection('About')">About</a></li>
-        <li><a href="Services" @click="scrollToSection('Services')">Services</a></li>
-        <li><a href="Contacts" @click="scrollToSection('Contacts')">Contacts</a></li>
-      </ul>
-    </nav>
     <header class="hero">
       <div class="overlay"></div>
       <h2 class="hero-text">Welcome to  <span style="color: darkviolet;">Katwai's</span> <br> Donation Organization</h2>
@@ -66,7 +55,7 @@
       <p>© 2025 Donation Management. All rights reserved.</p>
     </footer>
   </div>
-  </div>
+
   
   
 </template>
@@ -84,50 +73,9 @@ export default {
 </script>
 
 <style scoped>
-.main-container {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
-  background-color: #e23fac;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  gap: 6.5rem;
-  margin: 0;
-}
-
-.nav-links a {
-  color: rgb(48, 35, 226);
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.nav-links a:hover,
-.active-link {
-  font-weight: bold;
-  background-color: #68ce54;
-  border-radius: 5px;
-  padding: 2px 5px;
-}
+  
 
 .hero {
-  background-image: url('src/assets/background.jpg');
-  background-size: cover;
   background-position: center;
   height: 90vh;
   display: flex;

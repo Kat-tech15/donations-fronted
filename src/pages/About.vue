@@ -18,8 +18,8 @@
   <style scoped>
   .about {
     text-align: center;
-    background-color: #f5f5f5;
-    padding: 4rem 2rem;
+    max-width: 100%;
+    padding: 0;
   }
   .section-title {
     font-size: 2rem;
@@ -28,8 +28,7 @@
   }
   .section-text {
     font-size: 1.2rem;
-    color: #4b5563;
-    max-width: 600px;
+    max-width: 100%;
     margin: 0 auto;
   }
   .highlight {

@@ -43,8 +43,8 @@
   <style scoped>
   .contacts {
     text-align: left;
-    background-color: rgb(187, 235, 243);
-    padding: 4rem 2rem;
+    margin: 0;
+    padding: 0;
     color: #308a35;
   }
   .section-title {
@@ -52,7 +52,7 @@
     font-size: 2rem;
     color: hotpink;
     font-weight: bold;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
   }
   .contacts-form {
     max-width: 500px;

@@ -38,7 +38,7 @@
     margin: 50px auto;
     padding: 20px;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color:rgb(8, 183, 214);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
